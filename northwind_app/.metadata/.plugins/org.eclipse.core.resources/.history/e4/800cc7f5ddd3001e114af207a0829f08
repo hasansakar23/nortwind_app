@@ -1,0 +1,5 @@
+package hasansakar.northwind.core.dtos.requests.suppliers;
+
+public class UpdatedSupplierRequest {
+
+}

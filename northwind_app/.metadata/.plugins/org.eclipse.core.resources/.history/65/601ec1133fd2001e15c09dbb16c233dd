@@ -1,0 +1,5 @@
+package hasansakar.northwind.core.dtos.responses.products;
+
+public class ProductResponse {
+
+}

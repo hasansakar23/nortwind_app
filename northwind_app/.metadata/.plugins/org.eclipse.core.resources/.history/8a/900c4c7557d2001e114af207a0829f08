@@ -1,0 +1,5 @@
+package hasansakar.northwind.core.dtos.requests.categories;
+
+public class CreateCategoryRequest {
+
+}

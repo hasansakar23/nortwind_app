@@ -1,0 +1,5 @@
+package hasansakar.northwind.core.results;
+
+public class SuccesDataResult {
+
+}

@@ -1,0 +1,10 @@
+package hasansakar.northwind.business.concretes;
+
+import org.springframework.stereotype.Service;
+
+import hasansakar.northwind.business.abstracts.SupplierService;
+
+@Service
+public class SupplierManager implements SupplierService {
+
+}

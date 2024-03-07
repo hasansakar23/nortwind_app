@@ -1,0 +1,12 @@
+package hasansakar.northwind.business.abstracts;
+
+import java.util.List;
+
+import hasansakar.northwind.core.dtos.responses.products.ProductResponse;
+import hasansakar.northwind.core.results.DataResult;
+
+public interface ProductService {
+
+	DataResult<List<ProductResponse>> getAll();
+
+}

@@ -1,0 +1,32 @@
+package hasansakar.northwind.business.concretes;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import hasansakar.northwind.business.abstracts.ProductService;
+import hasansakar.northwind.core.dtos.responses.products.ProductResponse;
+import hasansakar.northwind.core.mapping.ModelMapperService;
+import hasansakar.northwind.core.results.DataResult;
+import hasansakar.northwind.core.results.SuccesDataResult;
+import hasansakar.northwind.entitiy.Product;
+import hasansakar.northwind.repository.ProductRepository;
+
+public class ProductManager implements ProductService {
+	private ProductRepository productRepository;
+	private ModelMapperService modelMapperService;
+	@Autowired
+	public ProductManager(ProductRepository productRepository, ModelMapperService modelMapperService) {
+		this.modelMapperService=modelMapperService;
+		this.productRepository=productRepository;
+		
+	}
+	@Override
+	public DataResult<List<ProductResponse>> getAll() {
+		List<Product> products= productRepository.findAll();
+		List<ProductResponse> response =products.stream().map
+				(product -> this.modelMapperService.forResponse().map(products, ProductResponse.class)).toList();
+	return new SuccesDataResult<List<ProductResponse>>(response);
+	}
+
+}

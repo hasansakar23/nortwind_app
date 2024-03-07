@@ -1,0 +1,37 @@
+package hasansakar.northwind.entitiy;
+
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name="countries")
+public class Country {
+	 @Id
+	    @Column(name="country_id")
+	    private int countryId;
+	    @Column(name="country_name")
+	    private String countryName;
+
+
+	    @OneToMany(mappedBy = "country")
+	    List<Customer> customers;
+
+
+	    @OneToMany(mappedBy = "country")
+	    List<Employee> employees;
+
+	    @OneToMany(mappedBy = "country")
+	    List<Supplier> suppliers;
+
+}

@@ -1,0 +1,5 @@
+package hasansakar.northwind.entitiy;
+
+public class OrderDetailId {
+
+}

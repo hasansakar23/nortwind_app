@@ -1,0 +1,5 @@
+package hasansakar.northwind.repository;
+
+public interface SupplierRepository {
+
+}

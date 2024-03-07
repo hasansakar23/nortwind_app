@@ -1,0 +1,31 @@
+package hasansakar.northwind.business.concretes;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import hasansakar.northwind.business.abstracts.CustomerService;
+import hasansakar.northwind.core.dtos.responses.customers.CustomerResponse;
+import hasansakar.northwind.core.mapping.ModelMapperService;
+import hasansakar.northwind.core.results.DataResult;
+import hasansakar.northwind.core.results.SuccesDataResult;
+import hasansakar.northwind.entitiy.Customer;
+import hasansakar.northwind.repository.CustomerRepository;
+
+public class CustomerManager implements CustomerService {
+	private ModelMapperService  modelMapperService;
+	private CustomerRepository customerRepository;
+	@Autowired
+	public CustomerManager(ModelMapperService modelMapperService, CustomerRepository customerRepository) {
+		super();
+		this.modelMapperService = modelMapperService;
+		this.customerRepository = customerRepository;
+	}
+	@Override
+	public DataResult<List<CustomerResponse>> getAll() {
+		List<Customer> customers= customerRepository.findAll();
+		List<CustomerResponse> response= customers.stream().map(customer->this.modelMapperService.forResponse().map(customers, CustomerResponse.class)).toList();
+		return new SuccesDataResult<List<CustomerResponse>>(response);
+	}
+	
+}
